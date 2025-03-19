@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "12511767522",
+    "project_id": "aibilling",
+    "storage_bucket": "aibilling.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12511767522:android:b3b8213a10a4091d3d27bb",
+        "android_client_info": {
+          "package_name": "com.bluebooth"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyy84NIb5HrUjrnyhWJMPo5EiXovwTXAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
