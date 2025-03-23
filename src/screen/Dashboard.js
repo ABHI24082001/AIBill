@@ -25,33 +25,33 @@ const HomeScreen = () => {
     },
     {
       title: ' Billing Screen',
-      icon: 'music',
+      icon: 'th-list',
       colors: ['#F2994A', '#F2C94C'],
       screen: 'Blooth',
     },
     {
       title: 'Inventory Screen',
-      icon: 'spa',
+      icon: 'hdd-o',
       colors: ['#8E2DE2', '#4A00E0'],
-      screen: 'Onboarding',
-    },
-    {
-      title: 'Customer Screen',
-      icon: 'bed',
-      colors: ['#56CCF2', '#2F80ED'],
       screen: 'Product',
     },
     {
-      title: 'Reports Screen',
-      icon: 'bed',
-      colors: ['#deffba', '#9afc30'],
+      title: 'Customer Screen',
+      icon: 'users',
+      colors: ['#fab9b4', '#f26b61'],
       screen: 'Onboarding',
     },
     {
+      title: 'Reports Screen',
+      icon: 'bar-chart-o',
+      colors: ['#deffba', '#9afc30'],
+      screen: 'ReportScreen',
+    },
+    {
       title: 'Bluetooth',
-      icon: 'bed',
-      colors: ['#fab9b4', '#f26b61'],
-      screen: 'Onboarding',
+      icon: 'bluetooth-b',
+      colors: ['#56CCF2', '#2F80ED'],
+      screen: 'bluetooth',
     },
   ];
 

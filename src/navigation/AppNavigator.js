@@ -15,6 +15,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Menu from '../screen/Menu';
 import Blooth from '../screen/Blooth';
 import Product from '../screen/Product';
+import bluetooth from '../screen/bluetooth';
+import Onboarding from '../screen/Onbodaring';
+import RrportScreen from '../screen/RrportScreen';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -101,6 +104,9 @@ const AppNavigator = () => {
        <Stack.Screen name="Menu" component={Menu} />
        <Stack.Screen name="Blooth" component={Blooth} />
        <Stack.Screen name="Product" component={Product} />
+       <Stack.Screen name="bluetooth" component={bluetooth} />
+       <Stack.Screen name="Onboarding" component={Onboarding} />
+       <Stack.Screen name="ReportScreen" component={RrportScreen}/>
      </Stack.Navigator>
    </NavigationContainer>
  );

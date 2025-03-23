@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,7 @@ import {
   Alert,
   ActivityIndicator,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context'; // Import SafeAreaView
+import {SafeAreaView} from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/AntDesign';
 import auth from '@react-native-firebase/auth';
@@ -21,6 +21,8 @@ const LoginScreen = ({navigation}) => {
   const [timer, setTimer] = useState(30);
   const [confirm, setConfirm] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const otpInputs = useRef([]);
 
   useEffect(() => {
     checkLoginStatus();
@@ -45,17 +47,26 @@ const LoginScreen = ({navigation}) => {
 
   const confirmCode = async () => {
     try {
-      if (!confirm) throw new Error('No confirmation object');
-      const userCredential = await confirm.confirm(otp.join(''));
+      if (!confirm) {
+        Alert.alert('Error', 'OTP confirmation object is missing.');
+        return;
+      }
+      const fullOtp = otp.join('');
+      if (fullOtp.length !== 6) {
+        Alert.alert('Error', 'Please enter the complete OTP.');
+        return;
+      }
+
+      const userCredential = await confirm.confirm(fullOtp);
       const userId = userCredential.user.uid;
 
       console.log('User ID:', userId);
-      Alert.alert('Success', `OTP Verified Successfully! User ID: ${userId}`);
+      Alert.alert('Success', `OTP Verified Successfully!`);
 
       await AsyncStorage.setItem('isLoggedIn', 'true');
       await AsyncStorage.setItem('userId', userId);
 
-      navigation.replace('Drawer', {user}); // Pass user object to Drawer screen
+      navigation.replace('Drawer', {user: userCredential.user});
     } catch (error) {
       console.error('OTP verification error:', error.code, error.message);
       Alert.alert(
@@ -83,6 +94,10 @@ const LoginScreen = ({navigation}) => {
   const handleOtpChange = (value, index) => {
     let newOtp = [...otp];
     newOtp[index] = value;
+
+    if (value && index < 5) {
+      otpInputs.current[index + 1]?.focus(); // Move to next input
+    }
     setOtp(newOtp);
   };
 
@@ -129,6 +144,7 @@ const LoginScreen = ({navigation}) => {
             {otp.map((digit, index) => (
               <TextInput
                 key={index}
+                ref={el => (otpInputs.current[index] = el)}
                 style={styles.otpInput}
                 keyboardType="number-pad"
                 maxLength={1}
@@ -174,11 +190,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 20,
   },
-  loaderContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  loaderContainer: {flex: 1, justifyContent: 'center', alignItems: 'center'},
   image: {width: 250, height: 250, marginBottom: 20},
   title: {fontSize: 42, fontWeight: 'bold', marginBottom: 10, color: '#000'},
   subtitle: {fontSize: 20, color: '#000', marginBottom: 20},

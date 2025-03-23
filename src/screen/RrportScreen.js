@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Menu = () => {
+const RrportScreen = () => {
   return (
     <View>
-      <Text>Menu</Text>
+      <Text>RrportScreen</Text>
     </View>
   )
 }
 
-export default Menu
+export default RrportScreen
 
 const styles = StyleSheet.create({})

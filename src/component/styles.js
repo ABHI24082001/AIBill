@@ -3,30 +3,56 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
-    paddingHorizontal: 20,
+    backgroundColor: '#F5F5F5',
+    paddingHorizontal: 16,
+    paddingTop: 10,
   },
-  containerList: {flex: 1, flexDirection: 'column'},
-  bluetoothStatusContainer: {justifyContent: 'flex-end', alignSelf: 'flex-end'},
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 15,
+    paddingHorizontal: 10, 
+  },
+  backButton: {
+    padding: 10,
+    marginRight: 20,
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    marginLeft: 20
+  },
+  bluetoothStatusContainer: {
+    alignItems: 'center',
+    marginTop: 10,
+  },
   bluetoothStatus: color => ({
-    backgroundColor: color,
-    padding: 8,
-    borderRadius: 2,
-    color: 'white',
-    paddingHorizontal: 14,
-    marginBottom: 20,
-  }),
-  bluetoothInfo: {
-    textAlign: 'center',
     fontSize: 16,
-    color: '#FFC806',
+    fontWeight: 'bold',
+    color: color,
+  }),
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#444',
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  printerInfo: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  containerList: {
     marginBottom: 20,
   },
-  sectionTitle: {fontWeight: 'bold', fontSize: 18, marginBottom: 12},
-  printerInfo: {
-    textAlign: 'center',
-    fontSize: 16,
-    color: '#E9493F',
-    marginBottom: 20,
+  startButton: {
+    backgroundColor: '#007AFF',
+    padding: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 20,
   },
 });
